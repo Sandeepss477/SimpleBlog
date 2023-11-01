@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <link rel="stylesheet" href="styles.css">
+
+
+
+
+
+{% comment %} <h1>Post</h1> {% endcomment %}
+
+ {% comment %} <ul>
+{% for post in object_list  %}
+    <li><a href="{% url 'article_details' post.pk %}"> {{post.title}} 
+    <a href="{% url 'category' post.category %}" >   
+    {{post.category}}</a>
+    {{post.author.first_name}}
+    {{post.author.last_name}}</a><br/>
+    {{post.body}} 
+</li> 
+
+{% endfor %}
+</ul> {% endcomment %}
+
+{% comment %} <img src="{{ post.header_image.url }}"> {% endcomment %}
+<ul>
+{% for post in object_list  %}
+
+
+
+<br/>
+<b>
+{{ post.author }}
+</b>
+<br/><br/>
+<h6 style={"text-align: justify ;">
+
+<i>
+{{ post.body }} 
+</i></h6>
+
+
+<div><img src="{{ post.header_image.url }}" width="1000" height="400"></div>
+<a href="{% url 'add_comment' post.pk %}">
+        Add Comment</a> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+        &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp 
+<small><a href="{% url 'update_post' post.pk %}">Edit</a></small>&nbsp
+<small><a href="{% url 'delete_post' post.pk %}">Delete</a></small><hr>
+
+
+
+{% endfor %}
+
+
+
+{% endblock  %}
